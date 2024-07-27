@@ -1,0 +1,37 @@
+.orders {
+    padding: 4.5rem 0 1rem;
+}
+
+.orders__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.order {
+    background-color: var(--container-color);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0px 2px 6px hsla(var(--hue), 100%, 15%, 0.15);
+}
+
+.order__item {
+    margin-bottom: var(--mb-1);
+}
+
+.order__label {
+    font-weight: var(--font-bold);
+    margin-right: 0.5rem;
+}
+
+.order__title,
+.order__email,
+.order__topic {
+    display: inline;
+    font-size: var(--small-font-size);
+    color: var(--text-color);
+}
+
+.order__description {
+    font-size: var(--smaller-font-size);
+}
