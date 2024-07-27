@@ -257,18 +257,6 @@ img {
     background-color: var(--first-color-alt);
 }
 
-/*=============== FOOTER ===============*/
-.footer{
-    padding: 1rem 2rem 0.5rem;
-    text-align: center;
-}
-
-.footer__copy {
-    display: flex;
-    justify-content: center;
-    font-size: var(--smaller-font-size);
-}
-
 /*=============== SCROLL BAR ===============*/
 ::-webkit-scrollbar {
     width: .6rem;
