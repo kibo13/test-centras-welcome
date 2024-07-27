@@ -4,7 +4,7 @@ import { addData } from '../services/firebase/firebase.utils';
 const ContactForm = () => {
     const [formData, setFormData] = useState({
         name: '',
-        topic: 'idea',
+        topic: '',
         email: '',
         description: '',
     });
@@ -24,7 +24,7 @@ const ContactForm = () => {
             alert('Заявка успешно отправлена!');
             setFormData({
                 name: '',
-                topic: 'idea',
+                topic: '',
                 email: '',
                 description: '',
             });
@@ -72,7 +72,6 @@ const ContactForm = () => {
                         required
                     >
                         <option value="" disabled>Выберите</option>
-                        {/* Скрытая опция */}
                         <option value="idea">Я новатор, у меня есть идея</option>
                         <option value="partnership">Меня интересует партнерство</option>
                     </select>
