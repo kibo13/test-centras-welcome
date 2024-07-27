@@ -1,20 +1,19 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import Header from './components/Header';
-import Main from './components/Main';
-import ContactForm from './components/ContactForm';
-import Footer from './components/Footer';
+import Home from './pages/Home';
+import OrderList from './pages/OrderList';
 
 import './App.css';
 
 function App() {
     return (
-        <>
-            <Header />
-            <Main />
-            <ContactForm />
-            <Footer />
-        </>
+    <Router>
+        <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route exact path='/orders' element={<OrderList />} />
+        </Routes>
+    </Router>
     );
 }
 
