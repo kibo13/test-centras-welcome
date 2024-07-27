@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { addData } from '../services/firebase/firebase.utils';
+import Loader from './Loader';
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -8,6 +9,9 @@ const ContactForm = () => {
         email: '',
         description: '',
     });
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showLoader, setShowLoader] = useState(false);
 
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -19,6 +23,9 @@ const ContactForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
+        setShowLoader(true);
+
         try {
             await addData('orders', formData);
             alert('Заявка успешно отправлена!');
@@ -31,14 +38,16 @@ const ContactForm = () => {
         } catch (error) {
             console.error('Error submitting form: ', error);
             alert('Ошибка при отправке заявки. Пожалуйста, попробуйте еще раз.');
+        } finally {
+            setIsSubmitting(false);
+            setShowLoader(false);
         }
     };
 
     return (
         <section className="contact section container" id="contact">
-            <h2 className="section__title">
-                Подать заявку
-            </h2>
+            <h2 className="section__title">Подать заявку</h2>
+            {showLoader && <Loader />}
             <form onSubmit={handleSubmit} className="contact__form">
                 <div className="contact__form-group">
                     <label htmlFor="name" className="contact__form-label">Представьтесь, пожалуйста!</label>
@@ -86,7 +95,13 @@ const ContactForm = () => {
                         required
                     ></textarea>
                 </div>
-                <button type="submit" className="contact__form-button">Отправить</button>
+                <button
+                    type="submit"
+                    className="contact__form-button"
+                    disabled={isSubmitting}
+                >
+                    {isSubmitting ? 'Отправка...' : 'Отправить'}
+                </button>
             </form>
         </section>
     );
